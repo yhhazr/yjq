@@ -141,6 +141,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>yjq1</finalName>
+		<finalName>yjq</finalName>
 	</build>
 </project>
