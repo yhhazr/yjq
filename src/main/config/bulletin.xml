@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="bulletin" namespace="/" extends="json-default">
+		<action name="bulletinManage" class="com.yhh.web.action.bulletin.BulletinAction">
+			<result name="success">/WEB-INF/web/bulletin/bulletinList.jsp</result>
+		</action>
+		<action name="listBulletin" class="com.yhh.web.action.bulletin.BulletinAction" method="listBulletin">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+		</action>
+		<action name="addBulletin" class="com.yhh.web.action.bulletin.BulletinAction">
+			<result name="success">/WEB-INF/web/bulletin/addBulletin.jsp</result>
+		</action>
+		<action name="editBulletin" class="com.yhh.web.action.bulletin.BulletinAction" method="editBulletin">
+			<result name="success">/WEB-INF/web/bulletin/editBulletin.jsp</result>
+		</action>
+		<action name="viewBulletin" class="com.yhh.web.action.bulletin.BulletinAction" method="viewBulletin">
+			<result name="success">/WEB-INF/web/bulletin/viewBulletin.jsp</result>
+		</action>
+		<action name="deleteBulletin" class="com.yhh.web.action.bulletin.BulletinAction" method="deleteBulletin">
+			<result name="success" type="json">result</result>
+		</action>
+		<action name="addBulletinSubmit" class="com.yhh.web.action.bulletin.BulletinAction" method="addBulletinSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+		<action name="editBulletinSubmit" class="com.yhh.web.action.bulletin.BulletinAction" method="editBulletinSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+	</package>
+</struts>

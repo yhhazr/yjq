@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" namespace="/" extends="json-default">
+		<action name="userManage" class="com.yhh.web.action.user.UserAction" method="userManage">
+			<result name="success">/WEB-INF/web/user/userList.jsp</result>
+		</action>
+		<action name="listUser" class="com.yhh.web.action.user.UserAction" method="listUser">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+		</action>
+		<action name="addUser" class="com.yhh.web.action.user.UserAction" method="addUser">
+			<result name="success">/WEB-INF/web/user/addUser.jsp</result>
+		</action>
+		<action name="editUser" class="com.yhh.web.action.user.UserAction" method="editUser">
+			<result name="success">/WEB-INF/web/user/editUser.jsp</result>
+		</action>
+		<action name="deleteUser" class="com.yhh.web.action.user.UserAction" method="deleteUser">
+			<result name="success" type="json">result</result>
+		</action>
+		<action name="addUserSubmit" class="com.yhh.web.action.user.UserAction" method="addUserSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+		<action name="editUserSubmit" class="com.yhh.web.action.user.UserAction" method="editUserSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+	</package>
+</struts>

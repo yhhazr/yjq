@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="login" class="com.yhh.web.action.login.LoginAction" method="login">
+			<result name="success">/WEB-INF/web/login.jsp</result>
+		</action>
+		<action name="loginSubmit" class="com.yhh.web.action.login.LoginAction" method="loginSubmit">
+			<result name="input">/WEB-INF/web/login.jsp</result>
+			<result name="success">/WEB-INF/web/index.jsp</result>
+		</action>
+		<action name="logout" class="com.yhh.web.action.login.LoginAction" method="logout">
+			<result name="success">/WEB-INF/web/login.jsp</result>
+		</action>
+	</package>
+</struts>

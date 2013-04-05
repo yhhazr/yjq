@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	 <context:component-scan base-package="com.yhh.web"/>
+	 
+	
+	<!-- 
+	<bean name="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://r.rdc.sae.sina.com.cn:3307/app_yhhsae?characterEncoding=utf8&amp;autoReconnect=true"/>
+		<property name="username" value="xm43o2wm30"/>
+		<property name="password" value="xm3wzm0ijw242i4l21j1xlmx2452likx521iykwl"/>		
+	</bean>
+	-->
+	
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/yjq?characterEncoding=utf8&amp;autoReconnect=true"/>
+		<property name="user" value="root"/>
+		<property name="password" value="1123581321"/>	
+		<property name="maxIdleTime" value="10"/>
+		<property name="idleConnectionTestPeriod" value="10"/>
+	</bean>
+	
+	<!-- 
+		<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://r.rdc.sae.sina.com.cn:3307/app_yhhazr?characterEncoding=utf8&amp;autoReconnect=true"/>
+		<property name="user" value="5xn32xx10w"/>
+		<property name="password" value="jhjh22045zzhixy120m3x1h10m4344w4l4iw14zh"/>	
+		<property name="maxIdleTime" value="10"/>
+		<property name="idleConnectionTestPeriod" value="10"/>
+	</bean>
+	 -->
+	 
+	 <!-- Mybatis配置
+	<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+		<property name="mapperInterface" value="com.yhh.web.dao.mybatisMapper.UserMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	 -->
+	<!--Hibernate配置  --> 
+	<bean name="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.yhh.web.model.user.User</value>
+				<value>com.yhh.web.model.work.Work</value>
+				<value>com.yhh.web.model.file.Picture</value>
+				<value>com.yhh.web.model.file.Document</value>
+				<value>com.yhh.web.model.bulletin.Bulletin</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			 <value>
+		        hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+		        hibernate.hbm2ddl.auto=update
+		      </value>
+		</property>
+	</bean>
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	  	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+	 
+</beans>

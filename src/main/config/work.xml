@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="work" namespace="/" extends="json-default">
+		<action name="workManage" class="com.yhh.web.action.work.WorkAction" method="workManage">
+			<result name="success">/WEB-INF/web/work/workList.jsp</result>
+		</action>
+		<action name="checkWork" class="com.yhh.web.action.work.WorkAction">
+			<result name="success">/WEB-INF/web/work/checkWork.jsp</result>
+		</action>
+		<action name="listWork" class="com.yhh.web.action.work.WorkAction" method="listWork">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+		</action>
+		<action name="listAllWork" class="com.yhh.web.action.work.WorkAction" method="listAllWork">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+		</action>
+		<action name="addWork" class="com.yhh.web.action.work.WorkAction" method="addWork">
+			<result name="success">/WEB-INF/web/work/addWork.jsp</result>
+		</action>
+		<action name="viewWork" class="com.yhh.web.action.work.WorkAction" method="viewWork">
+			<result name="success">/WEB-INF/web/work/viewWork.jsp</result>
+		</action>
+		<action name="editWork" class="com.yhh.web.action.work.WorkAction" method="editWork">
+			<result name="success">/WEB-INF/web/work/editWork.jsp</result>
+		</action>
+		<action name="deleteWork" class="com.yhh.web.action.work.WorkAction" method="deleteWork">
+			<result name="success" type="json">result</result>
+		</action>
+		<action name="deletePic" class="com.yhh.web.action.work.WorkAction" method="deletePic">
+			<result name="success" type="json">result</result>
+		</action>
+		<action name="deleteDoc" class="com.yhh.web.action.work.WorkAction" method="deleteDoc">
+			<result name="success" type="json">result</result>
+		</action>
+		<action name="addWorkSubmit" class="com.yhh.web.action.work.WorkAction" method="addWorkSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+		<action name="editWorkSubmit" class="com.yhh.web.action.work.WorkAction" method="editWorkSubmit">
+			<result name="success" type="json">
+				<param name="includeProperties">result</param>
+			</result>
+			<result name="input" type="json">  
+       			 <param name="ignoreHierarchy">false</param>  
+            	 <param name="includeProperties">fieldErrors.*</param>      
+   			 </result>  
+		</action>
+		<action name="uploadPic" class="com.yhh.web.action.work.WorkAction" method="uploadPic">
+		</action>
+		<action name="uploadDoc" class="com.yhh.web.action.work.WorkAction" method="uploadDoc">
+		</action>
+		<action name="download" class="com.yhh.web.action.download.DownloadAction">
+			<result name="success" type="stream">
+				 <param name="contentDisposition">attachment;filename="${fileName}"</param> 
+                 <!-- 下载文件类型定义 -->
+                 <param name="contentType">application/octet-stream</param>
+                 <!-- 下载文件输出流定义 -->
+                 <param name="inputName">inputStream</param>
+                 <!-- 下载文件的缓冲大小 -->
+                 <param name="bufferSize">4096</param>
+            </result>
+		</action>
+	</package>
+</struts>
