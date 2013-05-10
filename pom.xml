@@ -84,16 +84,7 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>4.1.5.SP1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.1.1</version>
-		</dependency>
+		
 	</dependencies>
 	<build>
 		<resources>
@@ -112,13 +103,7 @@
 			</resource>
 		</resources>
 		<plugins>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<webappDirectory>src/main/webapp</webappDirectory>
-					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-				</configuration>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -138,6 +123,15 @@
 					<url>http://localhost:8080/manager/html</url>
 					<server>myserver</server>
 					<update>true</update>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<webappDirectory>src/main/webapp</webappDirectory>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
