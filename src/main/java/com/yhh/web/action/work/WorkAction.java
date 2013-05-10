@@ -15,7 +15,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sina.sae.storage.SaeStorage;
 import com.yhh.web.model.file.Document;
 import com.yhh.web.model.file.Picture;
 import com.yhh.web.model.pagination.PageInfo;
@@ -153,21 +152,21 @@ public class WorkAction extends ActionSupport{
 	}
 	
 	public String uploadPic() throws Exception{
-		HttpServletRequest request = ServletActionContext.getRequest();
-		ServletInputStream inputStream = request.getInputStream();
+		String saveRealFilePath = ServletActionContext.getServletContext().getRealPath("/upload");    
+		File fileDir = new File(saveRealFilePath);    
+		if (!fileDir.exists()) {    
+			fileDir.mkdirs();    
+		}   
+		File savefile;  
 		String extName = null;
         if(pictureFileName.lastIndexOf(".")>=0){  
             extName = pictureFileName.substring(pictureFileName.lastIndexOf("."));  
         } 
         String picName = new Date().getTime() + extName;
-        SaeStorage storage = new SaeStorage();
-		FileInputStream fileInput = new FileInputStream(picture);
-		byte[] fileInByte = new byte[fileInput.available()];
-		fileInput.read(fileInByte);
-		fileInput.close();
-		storage.write("test", picName, fileInByte);
+        savefile = new File(saveRealFilePath + "/" + picName); 
+        FileUtils.copyFile(picture,savefile);  
         if(workId != null && !"".equals(workId)){
-        	Picture pic = new Picture(Integer.parseInt(workId), storage.getUrl("test", picName), pictureFileName, new Date());
+        	Picture pic = new Picture(Integer.parseInt(workId),picName, pictureFileName, new Date());
         	picService.addPic(pic);
         }
 		return null;

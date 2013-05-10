@@ -146,8 +146,8 @@ $(".closeDoc").click(function(){
 						<s:if test="#st.getIndex()%4 == 0">
 							<li style="margin-left: 0;" class="span3">
 							<div class="thumbnail">
-								<a rel="clearbox[gallery=pic]" href="<s:property value='#pic.picName'/> " class="thumbnail"> 
-									<img style="height:160px;" alt="" src="<s:property value='#pic.picName' />">
+								<a rel="clearbox[gallery=pic]" href="upload/<s:property value='#pic.picName'/> " class="thumbnail"> 
+									<img style="height:160px;" alt="" src="upload/<s:property value='#pic.picName' />">
 								</a>
 								 <div style="text-align: center;overflow:hidden;width:90%;height:14px;margin-bottom:5px"><s:property value='#pic.realName'/></div>
 							 	<button value="<s:property value='#pic.id'/>" class="close closePic" title="删除">&times;</button>
@@ -157,8 +157,8 @@ $(".closeDoc").click(function(){
 						<s:else>
 							<li class="span3">
 							<div class="thumbnail">
-								<a rel="clearbox[gallery=pic]" href="<s:property value='#pic.picName'/> " class="thumbnail"> 
-									<img style="height:160px;" alt="" src="<s:property value='#pic.picName' />">
+								<a rel="clearbox[gallery=pic]" href="upload/<s:property value='#pic.picName'/> " class="thumbnail"> 
+									<img style="height:160px;" alt="" src="upload/<s:property value='#pic.picName' />">
 								</a>
 								 <div style="text-align: center;overflow:hidden;width:90%;height:14px;margin-bottom:5px"><s:property value='#pic.realName'/></div>
 							 	<button value="<s:property value='#pic.id'/>" class="close closePic" title="删除">&times;</button>

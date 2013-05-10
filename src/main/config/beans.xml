@@ -25,7 +25,7 @@
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/yjq?characterEncoding=utf8&amp;autoReconnect=true"/>
 		<property name="user" value="root"/>
-		<property name="password" value="1123581321"/>	
+		<property name="password" value="yhhazr"/>	
 		<property name="maxIdleTime" value="10"/>
 		<property name="idleConnectionTestPeriod" value="10"/>
 	</bean>
